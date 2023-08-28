@@ -258,51 +258,51 @@ st.pydeck_chart(pdk.Deck(
 
 
 
-def get_temperature_data(start_date, end_date):
-    # Substitua a string de conexão do MongoDB pela sua própria URL
-    uri = "mongodb+srv://carlos:<Jal406477>@acquacluster.4ooae.mongodb.net/?retryWrites=true&w=majority"
+# def get_temperature_data(start_date, end_date):
+#     # Substitua a string de conexão do MongoDB pela sua própria URL
+#     uri = "mongodb+srv://carlos:<Jal406477>@acquacluster.4ooae.mongodb.net/?retryWrites=true&w=majority"
 
-    # Crie uma instância do cliente MongoDB
-    client = MongoClient(uri)
+#     # Crie uma instância do cliente MongoDB
+#     client = MongoClient(uri)
 
-    # Acesse o banco de dados e a coleção desejados
-    db = client["acquacluster"]
-    collection = db["sensor"]
+#     # Acesse o banco de dados e a coleção desejados
+#     db = client["acquacluster"]
+#     collection = db["sensor"]
 
-    # Consulta ao banco de dados
-    query = {
-        "timestamp": {"$gte": start_date, "$lte": end_date}
-    }
-    results = collection.find(query)
+#     # Consulta ao banco de dados
+#     query = {
+#         "timestamp": {"$gte": start_date, "$lte": end_date}
+#     }
+#     results = collection.find(query)
 
-    # Converta os resultados em um DataFrame do pandas
-    temperature_data = pd.DataFrame(list(results))
+#     # Converta os resultados em um DataFrame do pandas
+#     temperature_data = pd.DataFrame(list(results))
 
-    # Feche a conexão com o MongoDB
-    client.close()
+#     # Feche a conexão com o MongoDB
+#     client.close()
 
-    return temperature_data
+#     return temperature_data
 
 
-# Título da aplicação
-st.title("Sistema de Consulta de Temperatura")
+# # Título da aplicação
+# st.title("Sistema de Consulta de Temperatura")
 
-# Sidebar para selecionar datas
-st.sidebar.header("Filtros")
-start_date = st.sidebar.date_input("Data de início", datetime.now() - timedelta(days=7))
-end_date = st.sidebar.date_input("Data de término", datetime.now())
+# # Sidebar para selecionar datas
+# st.sidebar.header("Filtros")
+# start_date = st.sidebar.date_input("Data de início", datetime.now() - timedelta(days=7))
+# end_date = st.sidebar.date_input("Data de término", datetime.now())
 
-# Obtenha os dados de temperatura usando a função criada
-temperature_data = get_temperature_data(start_date, end_date)
+# # Obtenha os dados de temperatura usando a função criada
+# temperature_data = get_temperature_data(start_date, end_date)
 
-# Exibição do histórico
-st.write("### Histórico de Temperaturas")
-st.write(temperature_data)
+# # Exibição do histórico
+# st.write("### Histórico de Temperaturas")
+# st.write(temperature_data)
 
-# Restante do código (exportação, impressão, etc.)
-# ...
+# # Restante do código (exportação, impressão, etc.)
+# # ...
 
-# Botão para imprimir
-if st.button("Imprimir Tabela"):
-    st.write("### Tabela de Temperaturas")
-    st.dataframe(temperature_data)
+# # Botão para imprimir
+# if st.button("Imprimir Tabela"):
+#     st.write("### Tabela de Temperaturas")
+#     st.dataframe(temperature_data)
