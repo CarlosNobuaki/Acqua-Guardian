@@ -6,7 +6,7 @@ import pydeck as pdk
 import requests
 
 from plotly import graph_objs as go
-from pymongo import MongoClient
+#from pymongo import MongoClient
 from datetime import datetime, timedelta
 
 
